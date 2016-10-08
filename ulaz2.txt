@@ -1,0 +1,30 @@
+.public a, b
+.extern c
+
+.data.prvi
+	sub_s r1, pc
+d:	.word 0x5
+	.char 0x5
+	.long d - b,    b, d-5
+.text.prvi
+a:   add_ r1, r2
+b:   addeqs r1, pc
+     call_ r1, -1
+	call_ b
+	ildr_ r1, b
+	ldc r2, d
+
+.text.drugi	
+	call_ potprogram
+
+e:	
+	in_ r1, r3
+	mov_ r3, r4
+	movlt  r1, r2, 0x9
+	call_ e
+	call_ b
+
+potprogram:
+	shr_ r1, 3
+
+.end
